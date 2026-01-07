@@ -295,8 +295,8 @@ import Layout from '../layouts/Layout.astro';
         <h2>See Evaloc in Action</h2>
         <p>Request a demonstration or site assessment for your water body.</p>
         <div class="cta-actions">
-          <a href="/contact" class="btn btn-secondary btn-lg">Request Demo</a>
-          <a href="/certifications" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+          <a href={`${import.meta.env.BASE_URL}/contact`} class="btn btn-secondary btn-lg">Request Demo</a>
+          <a href={`${import.meta.env.BASE_URL}/certifications`} class="btn btn-outline btn-lg" style="border-color: white; color: white;">
             View Certifications
           </a>
         </div>

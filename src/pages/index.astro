@@ -20,8 +20,8 @@ import WaterCalculator from '../components/WaterCalculator.astro';
           that has saved over 17 billion liters of water since 1983.
         </p>
         <div class="hero-actions">
-          <a href="/contact" class="btn btn-primary btn-lg">Get Started</a>
-          <a href="/technology" class="btn btn-outline btn-lg">Learn How It Works</a>
+          <a href={`${import.meta.env.BASE_URL}/contact`} class="btn btn-primary btn-lg">Get Started</a>
+          <a href={`${import.meta.env.BASE_URL}/technology`} class="btn btn-outline btn-lg">Learn How It Works</a>
         </div>
         <div class="hero-badges">
           <div class="badge">
@@ -179,7 +179,7 @@ import WaterCalculator from '../components/WaterCalculator.astro';
       </div>
 
       <div class="cta-center">
-        <a href="/technology" class="btn btn-primary btn-lg">Explore Our Technology</a>
+        <a href={`${import.meta.env.BASE_URL}/technology`} class="btn btn-primary btn-lg">Explore Our Technology</a>
       </div>
     </div>
   </section>
@@ -324,7 +324,7 @@ import WaterCalculator from '../components/WaterCalculator.astro';
         <h2>Ready to Conserve Water?</h2>
         <p>Contact us for a site assessment and cost-benefit analysis for your water body.</p>
         <div class="cta-actions">
-          <a href="/contact" class="btn btn-secondary btn-lg">Request Site Assessment</a>
+          <a href={`${import.meta.env.BASE_URL}/contact`} class="btn btn-secondary btn-lg">Request Site Assessment</a>
           <a href="#calculator" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
             Calculate Savings
           </a>

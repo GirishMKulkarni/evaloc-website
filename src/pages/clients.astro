@@ -357,8 +357,8 @@ import Layout from '../layouts/Layout.astro';
         <h2>Join Our Growing Client Base</h2>
         <p>Discover how Evaloc can help conserve water for your organization.</p>
         <div class="cta-actions">
-          <a href="/contact" class="btn btn-secondary btn-lg">Request Assessment</a>
-          <a href="/technology" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+          <a href={`${import.meta.env.BASE_URL}/contact`} class="btn btn-secondary btn-lg">Request Assessment</a>
+          <a href={`${import.meta.env.BASE_URL}/technology`} class="btn btn-outline btn-lg" style="border-color: white; color: white;">
             Learn More
           </a>
         </div>
