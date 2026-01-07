@@ -1,0 +1,491 @@
+---
+// Water Savings Calculator Component
+---
+
+<section id="calculator" class="section calculator-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Calculator</span>
+      <h2 class="section-title">Water Savings Calculator</h2>
+      <p class="section-subtitle">
+        Estimate how much water you can save with Evaloc based on your water body specifications.
+      </p>
+    </div>
+
+    <div class="calculator-card">
+      <form id="water-calculator" class="calculator-form">
+        <!-- Surface Area -->
+        <div class="form-group">
+          <label for="surface-area" class="form-label">
+            Water Body Surface Area
+          </label>
+          <div class="input-row">
+            <input
+              type="number"
+              id="surface-area"
+              name="surface-area"
+              min="1"
+              step="0.1"
+              placeholder="Enter surface area"
+              class="form-input"
+              required
+            />
+            <select id="area-unit" name="area-unit" class="form-select">
+              <option value="sqm">sq. meters</option>
+              <option value="ha">Hectares</option>
+              <option value="acres">Acres</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Region / Evaporation Rate -->
+        <div class="form-group">
+          <label for="region" class="form-label">
+            Region / Climate Zone
+          </label>
+          <select id="region" name="region" class="form-select form-select-full">
+            <option value="2500">Moderate Climate (2500mm/year)</option>
+            <option value="3000">Hot & Arid (3000mm/year)</option>
+            <option value="3500">Very Hot & Arid (3500mm/year)</option>
+            <option value="2000">Mediterranean (2000mm/year)</option>
+            <option value="custom">Custom evaporation rate</option>
+          </select>
+        </div>
+
+        <!-- Custom Evaporation Rate (hidden by default) -->
+        <div id="custom-rate-container" class="form-group hidden">
+          <label for="custom-rate" class="form-label">
+            Annual Evaporation Rate (mm/year)
+          </label>
+          <input
+            type="number"
+            id="custom-rate"
+            name="custom-rate"
+            min="500"
+            max="5000"
+            placeholder="Enter evaporation rate"
+            class="form-input"
+          />
+        </div>
+
+        <!-- Period -->
+        <div class="form-group">
+          <label for="period" class="form-label">
+            Application Period (months)
+          </label>
+          <select id="period" name="period" class="form-select form-select-full">
+            <option value="4">4 months (Summer)</option>
+            <option value="6">6 months (Extended dry season)</option>
+            <option value="8">8 months (Most of year)</option>
+            <option value="12">12 months (Full year)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-full">
+          Calculate Savings
+        </button>
+      </form>
+
+      <!-- Results -->
+      <div id="calculator-results" class="results hidden">
+        <h3 class="results-title">Estimated Results</h3>
+
+        <div class="results-grid">
+          <div class="result-card result-without">
+            <div class="result-label">Without Evaloc</div>
+            <div class="result-value" id="result-without">-</div>
+            <div class="result-desc">Water lost to evaporation</div>
+          </div>
+          <div class="result-card result-saved">
+            <div class="result-label">With Evaloc (35% saving)</div>
+            <div class="result-value" id="result-saved">-</div>
+            <div class="result-desc">Water saved</div>
+          </div>
+        </div>
+
+        <div class="result-card result-cost">
+          <div class="result-cost-row">
+            <span class="result-cost-label">Estimated Cost Savings</span>
+            <span class="result-cost-value" id="result-cost">-</span>
+          </div>
+          <p class="result-cost-note">
+            Based on water cost of $0.2/m³ and Evaloc application cost
+          </p>
+        </div>
+
+        <div class="result-note">
+          <p>
+            <strong>Note:</strong> These are estimates based on average conditions. Actual savings may vary between 10-50% depending on site conditions, wind, and temperature. Contact us for a detailed site assessment.
+          </p>
+        </div>
+
+        <div class="result-cta">
+          <a href="/contact" class="btn btn-secondary btn-lg">
+            Get Accurate Assessment
+            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calculator-section {
+    background: var(--color-bg-alt);
+  }
+
+  .calculator-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 2.5rem;
+  }
+
+  .calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .input-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .form-input {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    transition: all var(--transition);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 164, 0.1);
+  }
+
+  .form-select {
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    background: white;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .form-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 164, 0.1);
+  }
+
+  .form-select-full {
+    width: 100%;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Results */
+  .results {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .results-title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .result-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .result-without {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  }
+
+  .result-without .result-label {
+    color: #b91c1c;
+  }
+
+  .result-without .result-value {
+    color: #991b1b;
+  }
+
+  .result-without .result-desc {
+    color: #dc2626;
+  }
+
+  .result-saved {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  }
+
+  .result-saved .result-label {
+    color: #15803d;
+  }
+
+  .result-saved .result-value {
+    color: #166534;
+  }
+
+  .result-saved .result-desc {
+    color: #22c55e;
+  }
+
+  .result-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .result-value {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .result-desc {
+    font-size: 0.8rem;
+  }
+
+  .result-cost {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    margin-bottom: 1.5rem;
+  }
+
+  .result-cost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-cost-label {
+    color: var(--color-text);
+  }
+
+  .result-cost-value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .result-cost-note {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .result-note {
+    background: var(--color-bg-alt);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+  }
+
+  .result-note p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .result-cta {
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .calculator-card {
+      padding: 1.5rem;
+    }
+
+    .input-row {
+      flex-direction: column;
+    }
+
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .result-cost-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .form-input,
+    .form-select {
+      min-height: 48px;
+    }
+
+    .btn-lg {
+      min-height: 48px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .calculator-section {
+      padding: 3rem 0;
+    }
+
+    .calculator-card {
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .calculator-form {
+      gap: 1.25rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+    }
+
+    .form-input,
+    .form-select {
+      padding: 0.75rem;
+      font-size: 16px; /* Prevents iOS zoom */
+    }
+
+    .results-title {
+      font-size: 1.1rem;
+    }
+
+    .result-card {
+      padding: 1.25rem;
+    }
+
+    .result-value {
+      font-size: 1.5rem;
+    }
+
+    .result-cost-value {
+      font-size: 1.25rem;
+    }
+
+    .result-note p {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('water-calculator') as HTMLFormElement;
+  const regionSelect = document.getElementById('region') as HTMLSelectElement;
+  const customRateContainer = document.getElementById('custom-rate-container');
+  const resultsDiv = document.getElementById('calculator-results');
+
+  // Show/hide custom rate input
+  regionSelect?.addEventListener('change', () => {
+    if (regionSelect.value === 'custom') {
+      customRateContainer?.classList.remove('hidden');
+    } else {
+      customRateContainer?.classList.add('hidden');
+    }
+  });
+
+  // Format numbers with commas
+  const formatNumber = (num: number): string => {
+    return num.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  };
+
+  // Format volume with appropriate unit
+  const formatVolume = (cubicMeters: number): string => {
+    if (cubicMeters >= 1000000) {
+      return `${(cubicMeters / 1000000).toFixed(2)} Million m³`;
+    } else if (cubicMeters >= 1000) {
+      return `${formatNumber(cubicMeters)} m³`;
+    }
+    return `${formatNumber(cubicMeters)} m³`;
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Get values
+    let surfaceArea = parseFloat((document.getElementById('surface-area') as HTMLInputElement).value);
+    const areaUnit = (document.getElementById('area-unit') as HTMLSelectElement).value;
+    let evaporationRate = parseFloat(regionSelect.value);
+    const period = parseInt((document.getElementById('period') as HTMLSelectElement).value);
+
+    // Custom rate
+    if (regionSelect.value === 'custom') {
+      evaporationRate = parseFloat((document.getElementById('custom-rate') as HTMLInputElement).value) || 2500;
+    }
+
+    // Convert to square meters
+    if (areaUnit === 'ha') {
+      surfaceArea *= 10000;
+    } else if (areaUnit === 'acres') {
+      surfaceArea *= 4046.86;
+    }
+
+    // Calculate annual evaporation (adjust for period)
+    const periodFraction = period / 12;
+    const evaporationMeters = (evaporationRate / 1000) * periodFraction; // Convert mm to meters
+    const totalEvaporation = surfaceArea * evaporationMeters; // cubic meters
+
+    // Calculate savings (35% average)
+    const savedWater = totalEvaporation * 0.35;
+
+    // Calculate cost savings (approximate)
+    // Water value: ~$0.2/m³, Evaloc cost: ~$0.15/m³ saved
+    const costSavings = savedWater * 0.05; // Net savings per m³
+
+    // Display results
+    (document.getElementById('result-without') as HTMLElement).textContent = formatVolume(totalEvaporation);
+    (document.getElementById('result-saved') as HTMLElement).textContent = formatVolume(savedWater);
+    (document.getElementById('result-cost') as HTMLElement).textContent = `$${formatNumber(costSavings)}`;
+
+    resultsDiv?.classList.remove('hidden');
+
+    // Scroll to results
+    resultsDiv?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
