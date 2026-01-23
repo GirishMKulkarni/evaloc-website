@@ -23,16 +23,7 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
     <header class="header">
       <nav class="nav container">
         <a href={import.meta.env.BASE_URL} class="logo">
-          <svg class="logo-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-            <ellipse cx="30" cy="30" rx="20" ry="8" stroke="currentColor" stroke-width="1.5"/>
-            <ellipse cx="30" cy="30" rx="14" ry="5" stroke="currentColor" stroke-width="1.5"/>
-            <ellipse cx="30" cy="30" rx="8" ry="3" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M30 8 C28 12, 28 14, 30 16 C32 14, 32 12, 30 8Z" fill="currentColor"/>
-            <path d="M26 10 C24 13, 24 15, 26 17 C28 15, 28 13, 26 10Z" fill="currentColor" opacity="0.7"/>
-            <path d="M34 10 C32 13, 32 15, 34 17 C36 15, 36 13, 34 10Z" fill="currentColor" opacity="0.7"/>
-          </svg>
-          <span class="logo-text">EVALOC</span>
+          <img src={`${import.meta.env.BASE_URL}/images/logo.png`} alt="Evaloc Logo" class="logo-icon" />
         </a>
 
         <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -61,13 +52,7 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
         <div class="footer-grid">
           <div class="footer-brand">
             <a href={import.meta.env.BASE_URL} class="logo">
-              <svg class="logo-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
-                <ellipse cx="30" cy="30" rx="20" ry="8" stroke="currentColor" stroke-width="1.5"/>
-                <ellipse cx="30" cy="30" rx="14" ry="5" stroke="currentColor" stroke-width="1.5"/>
-                <ellipse cx="30" cy="30" rx="8" ry="3" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-              <span class="logo-text">EVALOC</span>
+              <img src={`${import.meta.env.BASE_URL}/images/logo.png`} alt="Evaloc Logo" class="logo-icon" />
             </a>
             <p class="footer-tagline">Water Evaporation Retardant</p>
             <p class="footer-desc">Proven, Preventive, Cost-effective water conservation since 1983.</p>
@@ -286,19 +271,11 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--color-primary);
   }
 
   .logo-icon {
-    width: 48px;
-    height: 48px;
-  }
-
-  .logo-text {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    height: 56px;
+    width: auto;
   }
 
   .nav-links {
@@ -383,8 +360,11 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
   }
 
   .footer-brand .logo {
-    color: white;
     margin-bottom: 1rem;
+  }
+
+  .footer-brand .logo-icon {
+    height: 48px;
   }
 
   .footer-tagline {
@@ -526,12 +506,7 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
     }
 
     .logo-icon {
-      width: 40px;
-      height: 40px;
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
+      height: 44px;
     }
   }
 
@@ -540,12 +515,7 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
       padding: 0 1rem;
     }
 
-    .logo-text {
-      font-size: 1.25rem;
-    }
-
     .logo-icon {
-      width: 36px;
       height: 36px;
     }
 
