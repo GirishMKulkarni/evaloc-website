@@ -315,6 +315,61 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Awards & Recognition -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-title">Awards & Recognition</h2>
+        <p class="section-subtitle">
+          Evaloc's innovative water conservation technology has been recognized for its contribution to sustainable development.
+        </p>
+      </div>
+
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-image">
+            <img src={`${import.meta.env.BASE_URL}/images/awards/mccia-award-2012-ceremony.jpeg`} alt="MCCIA Innovation and Entrepreneurship Award 2012 - Award ceremony" loading="lazy" />
+          </div>
+          <div class="award-content">
+            <h3>MCCIA Innovation and Entrepreneurship Award 2012</h3>
+            <p class="award-subtitle">G.S. Parkhe Industrial Merit Award</p>
+            <p>Awarded by the Mahratta Chamber of Commerce, Industries and Agriculture (MCCIA) for outstanding innovation in water conservation technology and entrepreneurial excellence.</p>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-image">
+            <img src={`${import.meta.env.BASE_URL}/images/awards/mccia-award-2012-certificate.jpeg`} alt="MCCIA Innovation and Entrepreneurship Award 2012 - Certificate and Trophy" loading="lazy" />
+          </div>
+          <div class="award-content">
+            <h3>Certificate & Trophy</h3>
+            <p class="award-subtitle">MCCIA Recognition 2012</p>
+            <p>This award recognizes Evaloc's significant contribution to environmental sustainability through innovative water evaporation reduction technology.</p>
+          </div>
+        </div>
+
+        <div class="award-card award-card-patent">
+          <div class="award-image award-image-patent">
+            <img src={`${import.meta.env.BASE_URL}/images/awards/patent-certificate-333588.jpg`} alt="Patent Certificate No. 333588 for Water Evaporation Retardant" loading="lazy" />
+          </div>
+          <div class="award-content">
+            <h3>Patent Certificate</h3>
+            <p class="award-subtitle">Patent No. 333588 | Granted: 28 Feb 2020</p>
+            <p>Official patent certificate for "Water Evaporation Retardant" technology, protecting the innovative formulation and application method.</p>
+            <a href={`${import.meta.env.BASE_URL}/documents/patent-certificate-333588.pdf`} class="btn-download" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 10v6m0 0l-3-3m3 3l3-3"/>
+                <path d="M5 17v2a2 2 0 002 2h10a2 2 0 002-2v-2"/>
+              </svg>
+              Download PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="container">
@@ -687,6 +742,131 @@ import Layout from '../layouts/Layout.astro';
 
     .page-header {
       padding: 8rem 0 3rem;
+    }
+  }
+
+  /* Awards Grid */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .award-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .award-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .award-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .award-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .award-card:hover .award-image img {
+    transform: scale(1.05);
+  }
+
+  .award-content {
+    padding: 1.5rem;
+  }
+
+  .award-content h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .award-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .award-content p:not(.award-subtitle):not(:last-child) {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Patent Card Specific */
+  .award-image-patent {
+    height: 320px;
+    background: #f8f9fa;
+  }
+
+  .award-image-patent img {
+    object-fit: contain;
+    padding: 1rem;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-download:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-download svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    .awards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .award-card-patent {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .awards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .award-card-patent {
+      grid-column: span 1;
+    }
+
+    .award-image {
+      height: 220px;
+    }
+
+    .patent-details {
+      text-align: center;
     }
   }
 </style>

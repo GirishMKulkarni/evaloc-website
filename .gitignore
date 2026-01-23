@@ -31,5 +31,6 @@ firebase-debug.log*
 
 # temporary files
 *.pdf
+!public/documents/*.pdf
 *.pptx
 ppt-images/
