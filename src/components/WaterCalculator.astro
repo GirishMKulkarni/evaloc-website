@@ -71,13 +71,12 @@
         <!-- Period -->
         <div class="form-group">
           <label for="period" class="form-label">
-            Application Period (months)
+            Application Period
           </label>
           <select id="period" name="period" class="form-select form-select-full">
-            <option value="4">4 months (Summer)</option>
-            <option value="6">6 months (Extended dry season)</option>
-            <option value="8">8 months (Most of year)</option>
-            <option value="12">12 months (Full year)</option>
+            <option value="0.4">4 months - Summer (~40% evaporation loss)</option>
+            <option value="0.7">7 months - Most of the year (~70% evaporation loss)</option>
+            <option value="1.0">12 months - Full year (100% evaporation loss)</option>
           </select>
         </div>
 
@@ -452,7 +451,7 @@
     let surfaceArea = parseFloat((document.getElementById('surface-area') as HTMLInputElement).value);
     const areaUnit = (document.getElementById('area-unit') as HTMLSelectElement).value;
     let evaporationRate = parseFloat(regionSelect.value);
-    const period = parseInt((document.getElementById('period') as HTMLSelectElement).value);
+    const evaporationLossFraction = parseFloat((document.getElementById('period') as HTMLSelectElement).value);
 
     // Custom rate
     if (regionSelect.value === 'custom') {
@@ -466,9 +465,8 @@
       surfaceArea *= 4046.86;
     }
 
-    // Calculate annual evaporation (adjust for period)
-    const periodFraction = period / 12;
-    const evaporationMeters = (evaporationRate / 1000) * periodFraction; // Convert mm to meters
+    // Calculate annual evaporation (adjust for evaporation loss percentage)
+    const evaporationMeters = (evaporationRate / 1000) * evaporationLossFraction; // Convert mm to meters
     const totalEvaporation = surfaceArea * evaporationMeters; // cubic meters
 
     // Calculate savings (35% average)
