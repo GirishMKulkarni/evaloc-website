@@ -13,7 +13,7 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,8 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
   <body>
     <header class="header">
       <nav class="nav container">
-        <a href={import.meta.env.BASE_URL} class="logo">
-          <img src={`${import.meta.env.BASE_URL}/images/logo.png`} alt="Evaloc Logo" class="logo-icon" />
+        <a href="/" class="logo">
+          <img src="/images/logo.png" alt="Evaloc Logo" class="logo-icon" />
         </a>
 
         <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -33,12 +33,12 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
         </button>
 
         <ul class="nav-links">
-          <li><a href={import.meta.env.BASE_URL}>Home</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/about`}>About</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/technology`}>Technology</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/certifications`}>Certifications</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/clients`}>Clients</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/contact`} class="btn btn-primary">Contact Us</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/technology">Technology</a></li>
+          <li><a href="/certifications">Certifications</a></li>
+          <li><a href="/clients">Clients</a></li>
+          <li><a href="/contact" class="btn btn-primary">Contact Us</a></li>
         </ul>
       </nav>
     </header>
@@ -51,8 +51,8 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href={import.meta.env.BASE_URL} class="logo">
-              <img src={`${import.meta.env.BASE_URL}/images/logo.png`} alt="Evaloc Logo" class="logo-icon" />
+            <a href="/" class="logo">
+              <img src="/images/logo.png" alt="Evaloc Logo" class="logo-icon" />
             </a>
             <p class="footer-tagline">Water Evaporation Retardant</p>
             <p class="footer-desc">Proven, Preventive, Cost-effective water conservation since 1983.</p>
@@ -61,19 +61,19 @@ const { title, description = "Evaloc - Water Evaporation Retardant. Proven techn
           <div class="footer-links">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href={`${import.meta.env.BASE_URL}/about`}>About Us</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}/technology`}>Our Technology</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}/certifications`}>Certifications</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}/clients`}>Our Clients</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/technology">Our Technology</a></li>
+              <li><a href="/certifications">Certifications</a></li>
+              <li><a href="/clients">Our Clients</a></li>
             </ul>
           </div>
 
           <div class="footer-links">
             <h4>Products</h4>
             <ul>
-              <li><a href={`${import.meta.env.BASE_URL}/technology#evaloc-srp`}>Evaloc SRP</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}/technology#sfmda`}>SFMDA Equipment</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}/technology#mpdt`}>MPDT Technique</a></li>
+              <li><a href="/technology#evaloc-srp">Evaloc SRP</a></li>
+              <li><a href="/technology#sfmda">SFMDA Equipment</a></li>
+              <li><a href="/technology#mpdt">MPDT Technique</a></li>
             </ul>
           </div>
 
